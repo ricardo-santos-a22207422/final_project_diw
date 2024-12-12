@@ -45,3 +45,8 @@ main {
   background: whitesmoke;
   color: black;
 }
+
+main Link {
+  /* Cor dos Links */
+  color: white;
+}
