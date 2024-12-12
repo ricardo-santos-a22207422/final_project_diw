@@ -27,8 +27,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="pt">
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Header />
         <main>{children}</main>
         <Link href="/tecnologias">Tecnologias ➭</Link>
