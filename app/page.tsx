@@ -2,7 +2,7 @@
 
 import React from 'react';
 import useSWR from 'swr';
-import { Product } from '/workspaces/final_project_diw/models/interfaces';
+import { Product } from '@/models/interfaces';
 
 // Fetcher function for useSWR
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
