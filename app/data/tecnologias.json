@@ -25,13 +25,13 @@
     },
     {
       "title": "API RESTful",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/a/a3/Restful.png",
+      "image": "https://miro.medium.com/v2/resize:fit:1200/format:webp/1*qj1OhJo7EM0GpdrJS-o1yg.png",
       "description": "Modelo arquitetural para criação de APIs eficientes.",
       "rating": 5
     },
     {
       "title": "Swagger",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/9/93/Swagger-logo.png",
+      "image": "https://static-00.iconduck.com/assets.00/swagger-icon-256x256-wjxq6mwi.png",
       "description": "Ferramenta para design e documentação de APIs.",
       "rating": 3
     },
@@ -43,13 +43,13 @@
     },
     {
       "title": "Codespaces",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/e/e0/GitHub_Codespaces_logo.svg",
+      "image": "https://github.githubassets.com/images/modules/logos_page/GitHub-Codespaces.png",
       "description": "Editor de código baseado na nuvem.",
       "rating": 4
     },
     {
       "title": "GitHub Pages",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/0/01/GitHub_Pages_logo.svg",
+      "image": "https://pbs.twimg.com/profile_images/1402250559950346240/3RsUTX8h_400x400.png",
       "description": "Serviço de hospedagem de sites estáticos do GitHub.",
       "rating": 4
     },
@@ -67,7 +67,7 @@
     },
     {
       "title": "Vercel",
-      "image": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Vercel_logo.svg",
+      "image": "https://assets.vercel.com/image/upload/front/favicon/vercel/180x180.png",
       "description": "Plataforma de hospedagem para projetos baseados em Next.js.",
       "rating": 4
     }
