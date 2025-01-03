@@ -1,7 +1,5 @@
 /* models/interface.ts */
 
-import internal from "stream";
-
 export interface Municipality {
     id: string;
     district_name: string;
