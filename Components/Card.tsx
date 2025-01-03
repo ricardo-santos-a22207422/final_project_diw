@@ -3,9 +3,10 @@ import { Product } from '@/models/interfaces';
 
 interface CardProps {
   product: Product;
+  addItemToCart: (product: Product) => void;
 }
 
-export default function Card({ product }: CardProps) {
+export default function Card({ product, addItemToCart }: CardProps) {
   return (
     <div className="max-w-xs bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
       <Image
@@ -34,9 +35,9 @@ export default function Card({ product }: CardProps) {
 
         <button
           className="mt-4 w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600"
-          onClick={() => alert(`Produto ${product.title} adicionado ao cesto!`)}
+          onClick={() => addItemToCart(product)}
         >
-          Adicionar ao Cesto
+          Adicionar ao Carrinho
         </button>
       </div>
     </div>

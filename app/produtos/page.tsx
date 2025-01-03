@@ -8,28 +8,28 @@ import { Product } from '@/models/interfaces';
 // Função de fetch para useSWR
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-// Componente da página
 export default function Produtos() {
-  // Buscando produtos da API usando SWR
   const { data: products, error } = useSWR<Product[]>('/api/products', fetcher);
 
-  // Estado para a pesquisa
-  const [search, setSearch] = useState<string>('');
-  // Estado para os produtos filtrados
-  const [filteredData, setFilteredData] = useState<Product[]>([]);
+  const [cart, setCart] = useState<Product[]>([]);
 
-  // Atualizando os produtos filtrados com base no search e no data
+  // Carregar produtos do local storage ao carregar a página
   useEffect(() => {
-    if (products) {
-      setFilteredData(
-        products.filter((product) =>
-          product.title.toLowerCase().includes(search.toLowerCase())
-        )
-      );
+    const storedCart = localStorage.getItem('cart');
+    if (storedCart) {
+      setCart(JSON.parse(storedCart));
     }
-  }, [search, products]);
+  }, []);
 
-  // Mensagens para estados de carregamento e erro
+  // Atualizar local storage sempre que o carrinho for modificado
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
+
+  const addItemToCart = (product: Product) => {
+    setCart((prevCart) => [...prevCart, product]);
+  };
+
   if (error) return <div className="text-red-500 text-center mt-4">Erro ao carregar os produtos.</div>;
   if (!products) return <div className="text-gray-500 text-center mt-4">A carregar...</div>;
 
@@ -41,22 +41,28 @@ export default function Produtos() {
         Explore nossa seleção incrível de produtos disponíveis na loja.
       </p>
 
-      {/* Campo de Pesquisa */}
-      <div className="mt-4 flex justify-center">
-        <input
-          type="text"
-          placeholder="Pesquisar produtos..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="p-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
-        />
-      </div>
-
       {/* Grid de Produtos */}
       <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filteredData.map((product) => (
-          <Card key={product.id} product={product} />
+        {products.map((product) => (
+          <Card key={product.id} product={product} addItemToCart={addItemToCart} />
         ))}
+      </div>
+
+      {/* Carrinho de compras */}
+      <div className="mt-12 p-4 bg-white shadow-md rounded-md">
+        <h2 className="text-xl font-bold text-gray-800">Carrinho de Compras</h2>
+        {cart.length > 0 ? (
+          <ul className="mt-4">
+            {cart.map((item, index) => (
+              <li key={index} className="flex justify-between border-b py-2">
+                <span>{item.title}</span>
+                <span>€{item.price.toFixed(2)}</span>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="text-gray-600 mt-4">Seu carrinho está vazio.</p>
+        )}
       </div>
     </div>
   );
